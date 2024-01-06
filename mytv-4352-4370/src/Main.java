@@ -77,7 +77,7 @@ public class Main {
             String data = customers.nextLine();
             String[] temp = data.split(":");
             Lists.userPasswords.put(temp[0],temp[1]);
-            Lists.userList.add(new Customer(temp[0], temp[1]));
+            Lists.userList.add(new Customer(temp[0], temp[1],temp[2],temp[3]));
         }
         customers.close();
         while(true) {

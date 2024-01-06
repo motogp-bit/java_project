@@ -30,11 +30,6 @@ public class ContentMatches extends JFrame{
                 public void mouseClicked(MouseEvent e) {
                     if (e.getClickCount() == 1) {
                         setBackground(Color.BLUE);
-//                        isAlreadyOneClick = true;
-//                        ActionListener taskPerformer = evt -> isAlreadyOneClick = false;
-//                        Timer t = new Timer(500,taskPerformer );
-//                        t.setRepeats(false);
-//                        t.start();
                     }
                     if (e.getClickCount() == 2) {
                         temp1 = info1;

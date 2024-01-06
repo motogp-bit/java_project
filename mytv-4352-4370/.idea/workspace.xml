@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4962100c-d0a3-448f-8930-2e998309a824" name="Changes" comment="TEST COMMITS GOING INSANE" />
+    <list default="true" id="4962100c-d0a3-448f-8930-2e998309a824" name="Changes" comment="FINAL COMMIT YEEEEEEEEAH" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -100,110 +100,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1698704670560</updated>
-    </task>
-    <task id="LOCAL-00016" summary="COMMIT NEW1">
-      <option name="closed" value="true" />
-      <created>1704133808057</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1704133808057</updated>
-    </task>
-    <task id="LOCAL-00017" summary="COMMIT NEW1">
-      <option name="closed" value="true" />
-      <created>1704147424381</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1704147424381</updated>
-    </task>
-    <task id="LOCAL-00018" summary="COMMIT NEW1">
-      <option name="closed" value="true" />
-      <created>1704155870403</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1704155870403</updated>
-    </task>
-    <task id="LOCAL-00019" summary="COMMIT of gods">
-      <option name="closed" value="true" />
-      <created>1704159813633</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1704159813633</updated>
-    </task>
-    <task id="LOCAL-00020" summary="COMMIT of gods">
-      <option name="closed" value="true" />
-      <created>1704216164925</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1704216164925</updated>
-    </task>
-    <task id="LOCAL-00021" summary="COMMIT of gods">
-      <option name="closed" value="true" />
-      <created>1704314290792</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1704314290792</updated>
-    </task>
-    <task id="LOCAL-00022" summary="COMMIT of gods SCHI">
-      <option name="closed" value="true" />
-      <created>1704323450335</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1704323450335</updated>
-    </task>
-    <task id="LOCAL-00023" summary="POSSIBLY LAST COMMIT?">
-      <option name="closed" value="true" />
-      <created>1704326824009</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1704326824009</updated>
-    </task>
-    <task id="LOCAL-00024" summary="ALMOST LAST COMMIT YOOOOOO">
-      <option name="closed" value="true" />
-      <created>1704332054125</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1704332054125</updated>
-    </task>
-    <task id="LOCAL-00025" summary="COULD MAYBE WORK AFTER THIS">
-      <option name="closed" value="true" />
-      <created>1704385249946</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1704385249946</updated>
-    </task>
-    <task id="LOCAL-00026" summary="COULD MAYBE WORK AFTER THIS????">
-      <option name="closed" value="true" />
-      <created>1704459823497</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1704459823497</updated>
-    </task>
-    <task id="LOCAL-00027" summary="COULD MAYBE WORK AFTER THIS????">
-      <option name="closed" value="true" />
-      <created>1704461064240</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1704461064240</updated>
-    </task>
-    <task id="LOCAL-00028" summary="COULD MAYBE WORK AFTER THIS????">
-      <option name="closed" value="true" />
-      <created>1704462098660</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1704462098660</updated>
     </task>
     <task id="LOCAL-00029" summary="COULD MAYBE WORK AFTER THIS????">
       <option name="closed" value="true" />
@@ -493,7 +389,111 @@
       <option name="project" value="LOCAL" />
       <updated>1704555396827</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="TEST COMMITS GOING INSANE">
+      <option name="closed" value="true" />
+      <created>1704555484273</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1704555484273</updated>
+    </task>
+    <task id="LOCAL-00066" summary="TEST COMMITS GOING INSANE">
+      <option name="closed" value="true" />
+      <created>1704556590740</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1704556590740</updated>
+    </task>
+    <task id="LOCAL-00067" summary="TEST COMMITS GOING INSANE">
+      <option name="closed" value="true" />
+      <created>1704558291638</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1704558291638</updated>
+    </task>
+    <task id="LOCAL-00068" summary="TEST COMMITS GOING INSANE">
+      <option name="closed" value="true" />
+      <created>1704559131979</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1704559131979</updated>
+    </task>
+    <task id="LOCAL-00069" summary="TEST COMMITS GOING INSANE">
+      <option name="closed" value="true" />
+      <created>1704560040624</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1704560040624</updated>
+    </task>
+    <task id="LOCAL-00070" summary="TEST COMMITS GOING INSANE">
+      <option name="closed" value="true" />
+      <created>1704561427287</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1704561427287</updated>
+    </task>
+    <task id="LOCAL-00071" summary="TEST COMMITS GOING INSANE">
+      <option name="closed" value="true" />
+      <created>1704561431489</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1704561431489</updated>
+    </task>
+    <task id="LOCAL-00072" summary="TEST COMMITS GOING INSANE">
+      <option name="closed" value="true" />
+      <created>1704563387888</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1704563387888</updated>
+    </task>
+    <task id="LOCAL-00073" summary="TEST COMMITS GOING INSANE">
+      <option name="closed" value="true" />
+      <created>1704567479707</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1704567479707</updated>
+    </task>
+    <task id="LOCAL-00074" summary="TEST COMMITS GOING INSANE">
+      <option name="closed" value="true" />
+      <created>1704568769396</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1704568769396</updated>
+    </task>
+    <task id="LOCAL-00075" summary="TEST COMMITS GOING INSANE">
+      <option name="closed" value="true" />
+      <created>1704569000590</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1704569000590</updated>
+    </task>
+    <task id="LOCAL-00076" summary="FINAL COMMIT YEEEEEEEEAH">
+      <option name="closed" value="true" />
+      <created>1704571452213</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1704571452213</updated>
+    </task>
+    <task id="LOCAL-00077" summary="FINAL COMMIT YEEEEEEEEAH">
+      <option name="closed" value="true" />
+      <created>1704572659245</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1704572659245</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -509,7 +509,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="second draft1" />
     <MESSAGE value="second draft2" />
     <MESSAGE value="second draft3" />
     <MESSAGE value="third draft" />
@@ -534,6 +533,7 @@
     <MESSAGE value="TEST COMMITS s" />
     <MESSAGE value="TEST COMMITS safasfsa" />
     <MESSAGE value="TEST COMMITS GOING INSANE" />
-    <option name="LAST_COMMIT_MESSAGE" value="TEST COMMITS GOING INSANE" />
+    <MESSAGE value="FINAL COMMIT YEEEEEEEEAH" />
+    <option name="LAST_COMMIT_MESSAGE" value="FINAL COMMIT YEEEEEEEEAH" />
   </component>
 </project>

@@ -95,22 +95,4 @@ public class Content {
         if (content.getCategory() != null && categoryList.contains(content.getCategory())) {this.category = content.getCategory();}
         if (content.getRelated() != null) {this.related = content.getRelated();}
     }
-//    public boolean testFields(Content content) {
-//        boolean correct = true;
-//        if (content.getTitle() != null){
-//            correct = content.getTitle().equals(this.title);
-//        }
-//        if (content.isOver18() != null) {
-//            correct =  content.isOver18() == this.over18;
-//        }
-//        if (content.getCategory() != null) {
-//            correct = content.getCategory().equals(this.category);
-//        }
-//        if (content.getProtagonists() != null) {
-//        }
-//        if (content.getAverageRating() != 0.0f) {
-//            correct = this.getAverageRating() >= content.getAverageRating();
-//        }
-//        return correct;
-//    }
 }

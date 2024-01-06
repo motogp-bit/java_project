@@ -24,14 +24,13 @@ public SearchBar () {
     private void initialize() {
     final ArrayList<String[]> contentParam = new ArrayList<>();
         JPanel titlePanel = new JPanel();
-        titlePanel.setLayout(new BoxLayout(titlePanel,BoxLayout.X_AXIS));
         JLabel title = new JLabel("Title");
         JTextField titleField = new JTextField();
+        titleField.setColumns(25);
         titlePanel.add(title);
         titlePanel.add(titleField);
 
         JPanel typePanel = new JPanel();
-        typePanel.setLayout(new BoxLayout(typePanel,BoxLayout.X_AXIS));
         JLabel type = new JLabel("Type");
         JCheckBox movieCheck = new JCheckBox("Movie");
         JCheckBox seriesCheck = new JCheckBox("Series");
@@ -43,10 +42,10 @@ public SearchBar () {
         ArrayList<String> protagonistsList = new ArrayList<>();
 
         JPanel protagonistPanel = new JPanel();
-        protagonistPanel.setLayout(new BoxLayout(protagonistPanel,BoxLayout.X_AXIS));
         JLabel protagonistLabel = new JLabel("Protagonists");
         JLabel listProtagonists = new JLabel();
         JTextField protagonistField = new JTextField();
+        protagonistField.setColumns(30);
         JButton addProtagonist = new JButton("Add");
         addProtagonist.addActionListener(e -> {
             String protagonist = protagonistField.getText();

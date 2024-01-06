@@ -3,9 +3,11 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.awt.*;
 import api.*;
+import necessities.Errors;
 
 import static java.lang.Integer.parseInt;
 import static java.lang.String.valueOf;
+import static necessities.Functions.currentUser;
 
 
 public class ContentEditScreen extends JDialog{
@@ -24,23 +26,25 @@ public class ContentEditScreen extends JDialog{
     public void initialize(Content content) {
         ContentEditScreen frame = ContentEditScreen.this;
         frame.setBounds(0,0,Toolkit.getDefaultToolkit().getScreenSize().width,Toolkit.getDefaultToolkit().getScreenSize().height);
-        JPanel title = new JPanel(new BorderLayout());
+        JPanel title = new JPanel();
         JLabel titleLabel = new JLabel("New Title:");
         JTextField titleField = new JTextField(content.getTitle());
-        title.add(titleLabel,BorderLayout.WEST);
-        title.add(titleField,BorderLayout.CENTER);
-        JPanel desc = new JPanel(new BorderLayout());
+        titleField.setColumns(25);
+        title.add(titleLabel);
+        title.add(titleField);
+        JPanel desc = new JPanel();
         JLabel descLabel = new JLabel("New Description:");
         JTextField descField = new JTextField(content.getDesc());
-        desc.add(descLabel,BorderLayout.WEST);
-        desc.add(descField,BorderLayout.CENTER);
+        descField.setColumns(60);
+        desc.add(descLabel);
+        desc.add(descField);
         JPanel over18 = new JPanel(new BorderLayout());
         JLabel over18Label = new JLabel("Over 18:");
         JCheckBox over18Box = new JCheckBox();
         over18Box.setSelected(content.isOver18());
         over18.add(over18Label,BorderLayout.WEST);
         over18.add(over18Box,BorderLayout.CENTER);
-        JPanel protagonists = new JPanel(new BorderLayout());
+        JPanel protagonists = new JPanel();
         JLabel protLabel = new JLabel("New Protagonists: (Separate by commas)");
         StringBuilder sb = new StringBuilder();
         for (String item : content.getProtagonists()){
@@ -49,8 +53,9 @@ public class ContentEditScreen extends JDialog{
         }
         sb.setLength(sb.length() - 1);
         JTextField protField = new JTextField(sb.toString());
-        protagonists.add(protLabel,BorderLayout.WEST);
-        protagonists.add(protField,BorderLayout.CENTER);
+        protField.setColumns(45);
+        protagonists.add(protLabel);
+        protagonists.add(protField);
         JPanel category = new JPanel(new GridLayout(7,1));
         JLabel categoryLabel = new JLabel("New category:");
         category.add(categoryLabel);
@@ -98,26 +103,38 @@ public class ContentEditScreen extends JDialog{
         episodeDurationField.setColumns(4);
         if (content instanceof Movie) {
             yearField.setText(valueOf(((Movie) content).getYear()));
-            JPanel year = new JPanel(new BorderLayout());
+            JPanel year = new JPanel();
             JLabel yearLabel = new JLabel("New year:");
-            year.add(yearLabel,BorderLayout.WEST);
-            year.add(yearField,BorderLayout.CENTER);
+            year.add(yearLabel);
+            year.add(yearField);
             durationField.setText(valueOf(((Movie) content).getDuration()));
-            JPanel duration = new JPanel(new BorderLayout());
+            JPanel duration = new JPanel();
             JLabel durationLabel = new JLabel("New duration:");
-            duration.add(durationLabel,BorderLayout.WEST);
-            duration.add(durationField,BorderLayout.CENTER);
+            duration.add(durationLabel);
+            duration.add(durationField);
             add(year);
             add(duration);
         } else if (content instanceof Series) {
-            JPanel season = new JPanel(new BorderLayout());
+            StringBuilder ssn = new StringBuilder();
+            int dur = 0;
+            for (Season season : ((Series) content).getSeasonList()){
+                ssn.append(season.getNumber());
+                ssn.append(',');
+                ssn.append(season.getYear());
+                ssn.append('-');
+                dur = season.getEpisodeLength();
+            }
+            ssn.deleteCharAt(ssn.length() - 1);
+            JPanel season = new JPanel();
             JLabel seasonLabel = new JLabel("New seasons: (Format is number,year.To add multiple seasons,use - inbetween them.)");
-            season.add(seasonLabel,BorderLayout.WEST);
-            season.add(seasonField,BorderLayout.CENTER);
-            JPanel episodeDuration = new JPanel(new BorderLayout());
+            seasonField.setText(ssn.toString());
+            season.add(seasonLabel);
+            season.add(seasonField);
+            JPanel episodeDuration = new JPanel();
             JLabel episodeDurationLabel = new JLabel("New episode duration: (To edit this or the season one,you need to fill in both of them,else it won't work.)");
-            episodeDuration.add(episodeDurationLabel,BorderLayout.WEST);
-            episodeDuration.add(episodeDurationField,BorderLayout.CENTER);
+            episodeDurationField.setText(valueOf(dur));
+            episodeDuration.add(episodeDurationLabel);
+            episodeDuration.add(episodeDurationField);
             add(season);
             add(episodeDuration);
         }
@@ -168,13 +185,17 @@ public class ContentEditScreen extends JDialog{
             }
             if (content instanceof Movie) {
                 newContent = new Movie(titleText, descText, over18Text, categoryText, protagonistArray,parseInt(yearText),parseInt(durationText));
-                JOptionPane.showMessageDialog(new JFrame(),"Content edited successfully.");
             } else {
                 newContent = new Series(titleText, descText, over18Text, categoryText, protagonistArray,seasonList);
-                JOptionPane.showMessageDialog(new JFrame(),"Content edited successfully.");
             }
             for (String string : related.getText().split(",")) {
                 newContent.addRelated(string);
+            }
+            try {
+                ((Admin) currentUser).contentEdit(content, newContent);
+                JOptionPane.showMessageDialog(new JFrame(),"Content edited successfully.");
+            } catch(Errors.customException err) {
+                JOptionPane.showMessageDialog(new JFrame(),err);
             }
             setVisible(false);
             dispose();
@@ -182,8 +203,5 @@ public class ContentEditScreen extends JDialog{
         });
         frame.add(editButton);
 
-    }
-    public Content getCreatedContent() {
-        return this.newContent;
     }
 }

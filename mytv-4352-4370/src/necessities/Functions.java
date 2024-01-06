@@ -13,6 +13,7 @@ import static necessities.Lists.userList;
 
 public final class Functions {
     public static User currentUser;
+    //Checks nulls for when content is added through GUI
     public static void checkNulls (String type,String title,String description,String[] protArray,String year,String duration,ArrayList<Season> seasonList) throws Errors.customException{
         if (title.isEmpty()) throw new Errors.customException("Empty title");
         if (description.isEmpty()) throw new Errors.customException("Empty description");
@@ -24,13 +25,15 @@ public final class Functions {
             if (seasonList.isEmpty()) throw new Errors.customException("No seasons");
         }
     }
-    public static void createCustomer(String username,String password) throws Errors.customException {
-        if (username.isEmpty() || password.isEmpty()) throw new Errors.customException("You must complete all fields.");
+    //Creates new customer object and adds username+password pair to keys (if logout+login happens,even on the same session,this customer will be able to log in)
+    public static void createCustomer(String username,String password,String name,String surname) throws Errors.customException {
+        if (username.isEmpty() || password.isEmpty() || name.isEmpty() || surname.isEmpty()) throw new Errors.customException("You must complete all fields.");
         if (necessities.Lists.userPasswords.containsKey(username)) throw new Errors.customException("Username already in use.Pick a new username.");
         necessities.Lists.userPasswords.put(username,password);
-        Customer customer = new Customer (username,password);
+        Customer customer = new Customer (username,password,name,surname);
         necessities.Lists.userList.add(customer);
     }
+    //Logs in a user to the application
     public static void loginUser(String username,String password) throws Errors.customException {
         if (!Lists.userPasswords.containsKey(username)) throw new Errors.customException("This username isn't a valid username.");
         if (!(necessities.Lists.userPasswords.get(username)).equals(password)) throw new Errors.customException("Wrong password.");
@@ -41,25 +44,25 @@ public final class Functions {
                     currentUser = user;
                     break;
                 } else {
+                    // probably unnecessary?
                     throw new Errors.customException("User is already logged in.");
                 }
             }
         }
     }
+    //logs out a user
     public static void logoutUser () {
         currentUser.setLoginStatus(false);
         currentUser = null;
     }
 
+    //Should be enough checks to equate two contents
     public static boolean contentEquals(Content content1,Content content2) {
         if ((content1 instanceof Movie && !(content2 instanceof Movie)) || (content1 instanceof Series && !(content2 instanceof Series))) return false;
         if (!(content1.getTitle().equals(content2.getTitle()))) return false;
-        if (!(content1.isOver18() == content2.isOver18())) return false;
-        if (!(content1.getCategory().equals(content2.getCategory()))) return false;
-        if (!(content1.getDesc().equals(content2.getDesc()))) return false;
-        return content1.getRelated().equals(content2.getRelated());
+        return content1.getCategory().equals(content2.getCategory());
     }
-
+//Searches content with parameters.Over18 + type will never be empty.
     public static ArrayList<String[]> searchContent(String title, String type, ArrayList<String> protagonists, Boolean over18, ArrayList<String> categories, int rating) throws Errors.customException{
         ArrayList<String[]> tempList = new ArrayList<>();
         String[] tempString;
@@ -109,6 +112,7 @@ public final class Functions {
             throw new Errors.customException("No matches found,printing all content.");
         }
     }
+    //for ContentMatches
     public static Content displayContentGUI(String title,String type) {
         for (Content content : contentList) {
             if ((type.equals("Movie") && content instanceof Movie) || type.equals("Series") && content instanceof Series){
@@ -119,6 +123,7 @@ public final class Functions {
         }
         return new Content();
     }
+    //Runs on program end,deletes all current files and rewrites with the new data so as to keep track of changes made during execution.
     public static void storeData() throws IOException {
         File customers, Favorites, Movies, Ratings,Related,customersd,Favoritesd,Moviesd,Ratingsd,Relatedd;
         String currentDirectory = System.getProperty("user.dir");
@@ -147,7 +152,7 @@ public final class Functions {
         FileWriter myWriter1 = new FileWriter(currentDirectory + File.separator + "customers.txt");
         for (User object : userList) {
             if (object instanceof Customer) {
-                myWriter1.write(object.getUsername() + ':' + object.getPassword() + '\n');
+                myWriter1.write(object.getUsername() + ':' + object.getPassword() + ':' + ((Customer) object).getName() + ':' + ((Customer) object).getSurname() + '\n');
             }
         }
         myWriter1.close();
@@ -197,7 +202,7 @@ public final class Functions {
                     temp.append(related);
                     temp.append(',');
                 }
-                sb.deleteCharAt(sb.length() - 1);
+                sb.setLength(sb.length() - 1);
                 sb.append('\n');
                 myWriter6.write(temp.toString());
             }

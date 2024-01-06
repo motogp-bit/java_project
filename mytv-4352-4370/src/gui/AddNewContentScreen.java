@@ -25,17 +25,21 @@ public class AddNewContentScreen extends JFrame {
     public void initialize() {
         AddNewContentScreen frame = AddNewContentScreen.this;
         frame.setBounds(0,0,Toolkit.getDefaultToolkit().getScreenSize().width,Toolkit.getDefaultToolkit().getScreenSize().height);
-        JPanel titlePanel = new JPanel(new BorderLayout());
+        JPanel titlePanel = new JPanel();
         JLabel title = new JLabel("Title");
         JTextField titleField = new JTextField();
-        titlePanel.add(title,BorderLayout.WEST);
-        titlePanel.add(titleField,BorderLayout.CENTER);
+        titleField.setColumns(15);
+        titleField.setPreferredSize(new Dimension(50,20));
+        titlePanel.add(title);
+        titlePanel.add(titleField);
 
-        JPanel descriptionPanel = new JPanel(new BorderLayout());
+        JPanel descriptionPanel = new JPanel();
         JLabel description = new JLabel("Description");
         JTextField descriptionField = new JTextField();
-        descriptionPanel.add(description,BorderLayout.NORTH);
-        descriptionPanel.add(descriptionField,BorderLayout.CENTER);
+        descriptionField.setColumns(35);
+        descriptionField.setPreferredSize(new Dimension(50,20));
+        descriptionPanel.add(description);
+        descriptionPanel.add(descriptionField);
 
         JPanel typePanel = new JPanel(new BorderLayout());
         JLabel type = new JLabel("Type");
@@ -50,25 +54,25 @@ public class AddNewContentScreen extends JFrame {
         moviePanel.setLayout(new GridLayout(2,1));
 
         JPanel seriesPanel = new JPanel();
-        seriesPanel.setLayout(new BorderLayout());
+        seriesPanel.setLayout(new GridLayout(3,1));
 
         moviePanel.setVisible(true);
         seriesPanel.setVisible(false);
 
 
         JPanel yearPanel = new JPanel();
-        yearPanel.setLayout(new BorderLayout());
         JLabel yearLabel = new JLabel("Year");
         JTextField yearField = new JTextField();
-        yearPanel.add(yearLabel,BorderLayout.WEST);
-        yearPanel.add(yearField,BorderLayout.CENTER);
+        yearField.setColumns(5);
+        yearPanel.add(yearLabel);
+        yearPanel.add(yearField);
 
         JPanel durationPanel = new JPanel();
-        durationPanel.setLayout(new BorderLayout());
         JLabel durationLabel = new JLabel("Duration");
         JTextField durationField = new JTextField();
-        durationPanel.add(durationLabel,BorderLayout.WEST);
-        durationPanel.add(durationField,BorderLayout.CENTER);
+        durationField.setColumns(4);
+        durationPanel.add(durationLabel);
+        durationPanel.add(durationField);
 
         moviePanel.add(yearPanel);
         moviePanel.add(durationPanel);
@@ -79,21 +83,23 @@ public class AddNewContentScreen extends JFrame {
             }
         });
         JPanel seasonPanel = new JPanel();
-        seasonPanel.setLayout(new BorderLayout());
         JLabel seasonLabel = new JLabel("Seasons: (Format is number,year.To add multiple seasons,use - inbetween them.)");
+        JLabel help = new JLabel("You need to fill both those fields,otherwise you wont be able to add a season.",SwingConstants.CENTER);
         JTextField seasonField = new JTextField();
-        seasonPanel.add(seasonLabel,BorderLayout.WEST);
-        seasonPanel.add(seasonField,BorderLayout.CENTER);
+        seasonField.setPreferredSize(new Dimension(50,20));
+        seasonField.setColumns(50);
+        seasonPanel.add(seasonLabel);
+        seasonPanel.add(seasonField);
         JPanel episodeDurationPanel = new JPanel();
-        episodeDurationPanel.setLayout(new BorderLayout());
         JLabel episodeDurationLabel = new JLabel("Episode duration");
         JTextField episodeDurationField = new JTextField();
+        episodeDurationField.setPreferredSize(new Dimension(50,20));
         episodeDurationField.setColumns(4);
-        episodeDurationPanel.add(episodeDurationLabel,BorderLayout.WEST);
-        episodeDurationPanel.add(episodeDurationField,BorderLayout.CENTER);
-        seriesPanel.add(seasonPanel,BorderLayout.CENTER);
-        seriesPanel.add(episodeDurationPanel,BorderLayout.SOUTH);
-
+        episodeDurationPanel.add(episodeDurationLabel);
+        episodeDurationPanel.add(episodeDurationField);
+        seriesPanel.add(seasonPanel);
+        seriesPanel.add(episodeDurationPanel);
+        seriesPanel.add(help);
         seriesCheck.addItemListener(e -> {
             if (e.getStateChange() == ItemEvent.SELECTED){
                 moviePanel.setVisible(false);
@@ -163,11 +169,12 @@ public class AddNewContentScreen extends JFrame {
             }
         }
         JPanel relatedContent = new JPanel();
-        relatedContent.setLayout(new BorderLayout());
-        JLabel label = new JLabel("Related content: (Separate by commas");
+        JLabel label = new JLabel("Related content: (Separate by commas)");
         JTextField related = new JTextField();
-        relatedContent.add(label,BorderLayout.WEST);
-        relatedContent.add(related,BorderLayout.CENTER);
+        related.setColumns(60);
+        related.setPreferredSize(new Dimension(50,20));
+        relatedContent.add(label);
+        relatedContent.add(related);
 
         JButton addContentButton = new JButton("Add content");
 
@@ -186,6 +193,7 @@ public class AddNewContentScreen extends JFrame {
 
             if (movieCheck.isSelected()) {
                 try {
+                    //Needs to be here,otherwise runtime crash due to empty string
                     checkNulls("Movie",title.getText(),descriptionField.getText(),protArray,yearField.getText(),durationField.getText(),seasonList);
                     ((Admin) Functions.currentUser).addContent(titleField.getText(),descriptionField.getText(),ageRatingCheck.isSelected(),ctext,protArray,relatedArray,parseInt(yearField.getText()),parseInt(durationField.getText()),seasonList,"Movie");
                     JOptionPane.showMessageDialog(new JFrame(),"Content added successfully.");
@@ -195,12 +203,15 @@ public class AddNewContentScreen extends JFrame {
                 }
             } else if (seriesCheck.isSelected()) {
                 try {
-                    for (String item : seasonField.getText().split("-")) {
-                        String[] tempItem = item.split(",");
-                        seasonList.add(new Season(parseInt(tempItem[0]),parseInt(tempItem[1]),parseInt(episodeDurationField.getText())));
+                    if (!(seasonField.getText().isEmpty() || episodeDurationField.getText().isEmpty())) {
+                        for (String item : seasonField.getText().split("-")) {
+                            String[] tempItem = item.split(",");
+                            seasonList.add(new Season(parseInt(tempItem[0]), parseInt(tempItem[1]), parseInt(episodeDurationField.getText())));
+                        }
                     }
+                    //Needs to be here,otherwise runtime crash due to empty string
                     checkNulls("Series",title.getText(),descriptionField.getText(),protArray,yearField.getText(),durationField.getText(),seasonList);
-                    ((Admin) Functions.currentUser).addContent(titleField.getText(),descriptionField.getText(),ageRatingCheck.isSelected(),ctext,protArray,relatedArray,parseInt(yearField.getText()),parseInt(durationField.getText()),seasonList,"Series");
+                    ((Admin) Functions.currentUser).addContent(titleField.getText(),descriptionField.getText(),ageRatingCheck.isSelected(),ctext,protArray,relatedArray,0,0,seasonList,"Series");
                     JOptionPane.showMessageDialog(new JFrame(),"Content added successfully.");
                     frame.dispose();
                 } catch (Errors.customException err){

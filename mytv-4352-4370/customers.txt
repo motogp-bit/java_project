@@ -1,2 +1,2 @@
-user1:password1
-user2:password2
+user1:password1:name1:surname1
+user2:password2:name2:surname2

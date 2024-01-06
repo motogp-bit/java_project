@@ -2,8 +2,7 @@ package gui;
 import javax.swing.*;
 import javax.swing.JOptionPane;
 import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+
 
 import api.*;
 
@@ -12,7 +11,7 @@ import static necessities.Functions.currentUser;
 
 
 import necessities.Errors;
-import necessities.Lists;
+
 
 
 public class DisplayContentScreen extends JFrame{
@@ -105,15 +104,7 @@ public class DisplayContentScreen extends JFrame{
             JButton deleteButton = new JButton("Delete content");
             deleteButton.addActionListener(e -> {
                 try {
-                    for (User user: Lists.userList) {
-                        if (!(user.hasAdminPerms())){
-                            if (((Customer) user).favoriteList.contains(content)){
-                                ((Customer) user).favoriteList.remove(content);
-                                break;
-                            }
-                        }
                     ((Admin) currentUser).deleteContent(content);
-                    }
                     setVisible(false);
                     frame.dispose();
                     JOptionPane.showMessageDialog(new JFrame(),"Content deleted successfully.");
@@ -122,24 +113,9 @@ public class DisplayContentScreen extends JFrame{
                 }
             });
             JButton editButton = new JButton("Edit content");
-            editButton.addActionListener(e -> {
-                SwingUtilities.invokeLater((() -> {
-                    ContentEditScreen editFrame = new ContentEditScreen(content,frame);
-                    final Content[] newContent = new Content[1];
-                    editFrame.addWindowListener(new WindowAdapter() {
-                        @Override
-                        public void windowClosed(WindowEvent e) {
-                            newContent[0] = editFrame.getCreatedContent();
-                            super.windowClosed(e);
-                            try {
-                                ((Admin) currentUser).contentEdit(content, newContent[0]);
-                            } catch(Errors.customException err) {
-                                JOptionPane.showMessageDialog(new JFrame(),err);
-                            }
-                        }
-                    });
-                }));
-            });
+            editButton.addActionListener(e -> SwingUtilities.invokeLater((() -> {
+                ContentEditScreen editFrame = new ContentEditScreen(content,frame);
+            })));
             add(deleteButton);
             add(editButton);
         } else {

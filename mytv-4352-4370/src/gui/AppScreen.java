@@ -1,4 +1,5 @@
 package gui;
+import api.Customer;
 import necessities.Functions;
 
 import javax.swing.*;
@@ -14,6 +15,11 @@ public class AppScreen extends JFrame{
 
     public AppScreen() {
         AppScreen frame = AppScreen.this;
+        if (!(currentUser.hasAdminPerms())) {
+            setTitle(((Customer)currentUser).getName() + ' ' + ((Customer) currentUser).getSurname());
+        } else {
+            setTitle("Admin");
+        }
         frame.setBounds(0,0,Toolkit.getDefaultToolkit().getScreenSize().width,Toolkit.getDefaultToolkit().getScreenSize().height/2);
         JLabel label= new JLabel("App Page");
         setLayout(new FlowLayout());

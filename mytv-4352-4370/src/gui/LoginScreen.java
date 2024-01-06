@@ -48,6 +48,12 @@ public class LoginScreen extends JFrame{
 
             });
         add(loginButton);
+        JButton registerButton = new JButton("Register");
+        registerButton.setBounds(100,120,70,20);
+        registerButton.setBackground(Color.BLACK);
+        registerButton.setForeground(Color.CYAN);
+        registerButton.addActionListener(e-> SwingUtilities.invokeLater(RegisterUserScreen::new));
+        add(registerButton);
         JButton exitButton = new JButton("Exit");
         exitButton.addActionListener(e->{
             try {
@@ -72,5 +78,6 @@ public class LoginScreen extends JFrame{
         });
         this.setVisible(true);
     }
+    //Exit and logout button are functionally the same
     }
 

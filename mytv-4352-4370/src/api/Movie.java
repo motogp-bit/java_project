@@ -1,6 +1,5 @@
 package api;
 
-import java.util.ArrayList;
 
 public class Movie extends Content{
     private int year;
@@ -10,12 +9,6 @@ public class Movie extends Content{
         this.year = year;
         this.duration = duration;
     }
-//    public void displayMovieContent (){
-//        this.displayContent();
-//        System.out.printf("Year %d",this.year);
-//        System.out.printf("Duration %d",this.duration);
-//        this.displayRelated();
-//    }
     public int getYear() {
         return this.year;
     }
